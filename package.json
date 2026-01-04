@@ -33,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^8.51.0",
     "@typescript-eslint/parser": "^8.51.0",
     "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/coverage-v8": "^4.0.16",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.1",
     "eslint-config-prettier": "^10.1.8",
@@ -43,12 +44,14 @@
     "husky": "^9.1.7",
     "jsdom": "^27.4.0",
     "prettier": "^3.7.4",
+    "prisma": "^6.19.1",
     "textlint": "^15.5.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.51.0",
     "vitest": "^4.0.16"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.1",
     "next": "^16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
