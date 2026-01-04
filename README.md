@@ -104,6 +104,70 @@ describe('MyComponent', () => {
 - ブランチ: 80%以上
 - ステートメント: 80%以上
 
+## デプロイ
+
+### 前提条件
+
+- Google Cloud SDKがインストールされていること
+- プロジェクトID: `daily-report-483209`
+- Google Cloud Runへのデプロイ権限があること
+
+### デプロイコマンド（Makefile使用）
+
+```bash
+# Google Cloudの設定
+make setup-gcloud
+
+# ビルドとデプロイ
+make deploy
+
+# ローカルでDockerコンテナを実行
+make run-local
+
+# Dockerイメージのクリーンアップ
+make clean
+```
+
+### 手動デプロイ
+
+```bash
+# Dockerイメージのビルド
+docker build -t gcr.io/daily-report-483209/daily-report:latest .
+
+# Google Container Registryへプッシュ
+docker push gcr.io/daily-report-483209/daily-report:latest
+
+# Cloud Runへデプロイ
+gcloud run deploy daily-report \
+  --image gcr.io/daily-report-483209/daily-report:latest \
+  --platform managed \
+  --region asia-northeast1 \
+  --allow-unauthenticated \
+  --port 8080 \
+  --memory 512Mi \
+  --cpu 1 \
+  --min-instances 0 \
+  --max-instances 10 \
+  --project daily-report-483209
+```
+
+### CI/CD（GitHub Actions）
+
+mainブランチへのプッシュで自動デプロイが実行されます。
+
+**必要なシークレット設定:**
+
+- `GCP_SA_KEY`: Google Cloud サービスアカウントのJSONキー
+
+**ワークフロー:**
+
+1. コードのチェックアウト
+2. 依存関係のインストール
+3. テストの実行
+4. Dockerイメージのビルド
+5. Google Container Registryへのプッシュ
+6. Cloud Runへのデプロイ
+
 ## ドキュメント
 
 - [要件定義書](./CLAUDE.md)
