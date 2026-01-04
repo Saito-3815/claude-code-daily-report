@@ -15,7 +15,7 @@ model Salesperson {
   employeeCode String   @unique @map("employee_code") @db.VarChar(10)
   name         String   @db.VarChar(50)
   email        String   @unique @db.VarChar(255)
-  password     String   @db.VarChar(255)
+  password     String   @db.VarChar(128)
   managerId    BigInt?  @map("manager_id")
   department   String   @db.VarChar(50)
   isActive     Boolean  @default(true) @map("is_active")
