@@ -21,10 +21,7 @@ export interface ValidationError {
  * @param data バリデーション対象のデータ
  * @returns バリデーション結果
  */
-export function validate<T>(
-  schema: z.ZodSchema<T>,
-  data: unknown
-): ValidationResult<T> {
+export function validate<T>(schema: z.ZodSchema<T>, data: unknown): ValidationResult<T> {
   const result = schema.safeParse(data);
 
   if (result.success) {
@@ -58,10 +55,7 @@ export function validateQuery<T>(
  * @param body リクエストボディ
  * @returns バリデーション結果
  */
-export function validateBody<T>(
-  schema: z.ZodSchema<T>,
-  body: unknown
-): ValidationResult<T> {
+export function validateBody<T>(schema: z.ZodSchema<T>, body: unknown): ValidationResult<T> {
   return validate(schema, body);
 }
 

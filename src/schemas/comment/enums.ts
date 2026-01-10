@@ -8,13 +8,9 @@ export const CommentableType = {
   PLAN: 'Plan',
 } as const;
 
-export const commentableTypeSchema = z.enum([
-  CommentableType.PROBLEM,
-  CommentableType.PLAN,
-]);
+export const commentableTypeSchema = z.enum([CommentableType.PROBLEM, CommentableType.PLAN]);
 
 /**
  * 型エクスポート
  */
-export type CommentableType =
-  (typeof CommentableType)[keyof typeof CommentableType];
+export type CommentableType = (typeof CommentableType)[keyof typeof CommentableType];

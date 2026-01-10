@@ -62,10 +62,7 @@ export const createSalespersonRequestSchema = z.object({
     .string()
     .min(1, '社員番号を入力してください')
     .max(10, '社員番号は10文字以内で入力してください'),
-  name: z
-    .string()
-    .min(1, '氏名を入力してください')
-    .max(50, '氏名は50文字以内で入力してください'),
+  name: z.string().min(1, '氏名を入力してください').max(50, '氏名は50文字以内で入力してください'),
   email: z.string().email('正しいメールアドレス形式で入力してください'),
   password: z
     .string()
@@ -79,15 +76,13 @@ export const createSalespersonRequestSchema = z.object({
 /**
  * 営業更新リクエストのスキーマ
  */
-export const updateSalespersonRequestSchema = createSalespersonRequestSchema
-  .partial()
-  .extend({
-    password: z
-      .string()
-      .min(8, 'パスワードは8文字以上で入力してください')
-      .max(128, 'パスワードは128文字以内で入力してください')
-      .optional(),
-  });
+export const updateSalespersonRequestSchema = createSalespersonRequestSchema.partial().extend({
+  password: z
+    .string()
+    .min(8, 'パスワードは8文字以上で入力してください')
+    .max(128, 'パスワードは128文字以内で入力してください')
+    .optional(),
+});
 
 /**
  * 型エクスポート
@@ -97,9 +92,5 @@ export type Salesperson = z.infer<typeof salespersonSchema>;
 export type SalespersonMe = z.infer<typeof salespersonMeSchema>;
 export type Subordinate = z.infer<typeof subordinateSchema>;
 export type SalespersonListQuery = z.infer<typeof salespersonListQuerySchema>;
-export type CreateSalespersonRequest = z.infer<
-  typeof createSalespersonRequestSchema
->;
-export type UpdateSalespersonRequest = z.infer<
-  typeof updateSalespersonRequestSchema
->;
+export type CreateSalespersonRequest = z.infer<typeof createSalespersonRequestSchema>;
+export type UpdateSalespersonRequest = z.infer<typeof updateSalespersonRequestSchema>;

@@ -40,6 +40,4 @@ export const deleteProblemResponseDataSchema = z.object({
 export type Problem = z.infer<typeof problemSchema>;
 export type CreateProblemRequest = z.infer<typeof createProblemRequestSchema>;
 export type UpdateProblemRequest = z.infer<typeof updateProblemRequestSchema>;
-export type DeleteProblemResponseData = z.infer<
-  typeof deleteProblemResponseDataSchema
->;
+export type DeleteProblemResponseData = z.infer<typeof deleteProblemResponseDataSchema>;

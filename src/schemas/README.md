@@ -140,19 +140,19 @@ export async function GET(request: Request) {
 import { ReportStatus, VisitResult, CommentableType } from '@/schemas';
 
 // 日報ステータス
-ReportStatus.DRAFT      // 'draft'
-ReportStatus.SUBMITTED  // 'submitted'
-ReportStatus.CONFIRMED  // 'confirmed'
+ReportStatus.DRAFT; // 'draft'
+ReportStatus.SUBMITTED; // 'submitted'
+ReportStatus.CONFIRMED; // 'confirmed'
 
 // 訪問結果
-VisitResult.NEGOTIATING     // 'negotiating'
-VisitResult.CLOSED          // 'closed'
-VisitResult.REJECTED        // 'rejected'
-VisitResult.INFO_GATHERING  // 'info_gathering'
+VisitResult.NEGOTIATING; // 'negotiating'
+VisitResult.CLOSED; // 'closed'
+VisitResult.REJECTED; // 'rejected'
+VisitResult.INFO_GATHERING; // 'info_gathering'
 
 // コメント対象種別
-CommentableType.PROBLEM  // 'Problem'
-CommentableType.PLAN     // 'Plan'
+CommentableType.PROBLEM; // 'Problem'
+CommentableType.PLAN; // 'Plan'
 ```
 
 ## バリデーションヘルパー

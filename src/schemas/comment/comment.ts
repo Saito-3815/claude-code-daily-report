@@ -44,6 +44,4 @@ export const deleteCommentResponseDataSchema = z.object({
 export type Commenter = z.infer<typeof commenterSchema>;
 export type Comment = z.infer<typeof commentSchema>;
 export type CreateCommentRequest = z.infer<typeof createCommentRequestSchema>;
-export type DeleteCommentResponseData = z.infer<
-  typeof deleteCommentResponseDataSchema
->;
+export type DeleteCommentResponseData = z.infer<typeof deleteCommentResponseDataSchema>;

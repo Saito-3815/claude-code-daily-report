@@ -40,6 +40,4 @@ export const deletePlanResponseDataSchema = z.object({
 export type Plan = z.infer<typeof planSchema>;
 export type CreatePlanRequest = z.infer<typeof createPlanRequestSchema>;
 export type UpdatePlanRequest = z.infer<typeof updatePlanRequestSchema>;
-export type DeletePlanResponseData = z.infer<
-  typeof deletePlanResponseDataSchema
->;
+export type DeletePlanResponseData = z.infer<typeof deletePlanResponseDataSchema>;

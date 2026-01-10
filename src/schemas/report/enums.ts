@@ -23,10 +23,7 @@ export const ReportScope = {
   SUBORDINATES: 'subordinates',
 } as const;
 
-export const reportScopeSchema = z.enum([
-  ReportScope.OWN,
-  ReportScope.SUBORDINATES,
-]);
+export const reportScopeSchema = z.enum([ReportScope.OWN, ReportScope.SUBORDINATES]);
 
 /**
  * 型エクスポート

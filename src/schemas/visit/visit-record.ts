@@ -23,7 +23,10 @@ export const customerDetailSchema = customerBasicSchema.extend({
 export const visitRecordSchema = z.object({
   id: z.number().int().positive(),
   customer: customerDetailSchema,
-  visit_time: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
+  visit_time: z
+    .string()
+    .regex(/^\d{2}:\d{2}$/)
+    .nullable(),
   result: visitResultSchema.nullable(),
   result_label: z.string().nullable(),
   content: z.string().max(2000, '訪問内容は2000文字以内で入力してください'),
@@ -64,12 +67,6 @@ export const deleteVisitRecordResponseDataSchema = z.object({
 export type CustomerBasic = z.infer<typeof customerBasicSchema>;
 export type CustomerDetail = z.infer<typeof customerDetailSchema>;
 export type VisitRecord = z.infer<typeof visitRecordSchema>;
-export type CreateVisitRecordRequest = z.infer<
-  typeof createVisitRecordRequestSchema
->;
-export type UpdateVisitRecordRequest = z.infer<
-  typeof updateVisitRecordRequestSchema
->;
-export type DeleteVisitRecordResponseData = z.infer<
-  typeof deleteVisitRecordResponseDataSchema
->;
+export type CreateVisitRecordRequest = z.infer<typeof createVisitRecordRequestSchema>;
+export type UpdateVisitRecordRequest = z.infer<typeof updateVisitRecordRequestSchema>;
+export type DeleteVisitRecordResponseData = z.infer<typeof deleteVisitRecordResponseDataSchema>;

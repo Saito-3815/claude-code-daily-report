@@ -47,8 +47,14 @@ export const reportListItemSchema = z.object({
 export const reportListQuerySchema = paginationQuerySchema.extend({
   salesperson_id: z.coerce.number().int().positive().optional(),
   status: reportStatusSchema.optional(),
-  date_from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
-  date_to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  date_from: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .optional(),
+  date_to: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .optional(),
   scope: reportScopeSchema.default('own'),
 });
 
@@ -70,9 +76,7 @@ export const reportDetailBaseSchema = z.object({
  * 日報作成リクエストのスキーマ
  */
 export const createReportRequestBaseSchema = z.object({
-  report_date: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, '日付はYYYY-MM-DD形式で入力してください'),
+  report_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, '日付はYYYY-MM-DD形式で入力してください'),
 });
 
 /**
@@ -106,15 +110,7 @@ export type SalespersonDetail = z.infer<typeof salespersonDetailSchema>;
 export type ReportListItem = z.infer<typeof reportListItemSchema>;
 export type ReportListQuery = z.infer<typeof reportListQuerySchema>;
 export type ReportDetailBase = z.infer<typeof reportDetailBaseSchema>;
-export type CreateReportRequestBase = z.infer<
-  typeof createReportRequestBaseSchema
->;
-export type UpdateReportRequestBase = z.infer<
-  typeof updateReportRequestBaseSchema
->;
-export type SubmitReportResponseData = z.infer<
-  typeof submitReportResponseDataSchema
->;
-export type ConfirmReportResponseData = z.infer<
-  typeof confirmReportResponseDataSchema
->;
+export type CreateReportRequestBase = z.infer<typeof createReportRequestBaseSchema>;
+export type UpdateReportRequestBase = z.infer<typeof updateReportRequestBaseSchema>;
+export type SubmitReportResponseData = z.infer<typeof submitReportResponseDataSchema>;
+export type ConfirmReportResponseData = z.infer<typeof confirmReportResponseDataSchema>;

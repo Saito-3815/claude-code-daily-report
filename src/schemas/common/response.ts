@@ -42,9 +42,7 @@ export const paginationMetaSchema = z.object({
 /**
  * ページネーション付きレスポンスのスキーマ
  */
-export const paginatedResponseSchema = <T extends z.ZodTypeAny>(
-  dataSchema: T
-) =>
+export const paginatedResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
   z.object({
     status: z.literal('success'),
     data: z.array(dataSchema),
