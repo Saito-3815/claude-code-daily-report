@@ -13,7 +13,9 @@ export default function Home() {
         </p>
         <div className="mt-8 p-6 bg-card border rounded-lg shadow-sm">
           <p className="text-card-foreground font-semibold mb-2">✓ Tailwind CSS 正常動作</p>
-          <p className="text-card-foreground font-semibold mb-2">✓ shadcn/ui コンポーネント導入完了</p>
+          <p className="text-card-foreground font-semibold mb-2">
+            ✓ shadcn/ui コンポーネント導入完了
+          </p>
           <p className="text-card-foreground font-semibold">
             ✓ ダークモード対応（右上のボタンで切り替え可能）
           </p>
