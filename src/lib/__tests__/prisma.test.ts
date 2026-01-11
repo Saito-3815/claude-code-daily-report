@@ -4,26 +4,21 @@
 
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { prisma, db } from '../prisma';
+import { setupDatabase, cleanupDatabase } from '@/test/db-setup';
 
 describe('Prisma Client', () => {
   let isConnected = false;
 
   beforeAll(async () => {
-    // Try to connect to the database
-    // In test environment, database may not be available
-    try {
-      await db.connect();
-      isConnected = true;
-    } catch (error) {
-      console.warn('Database connection failed in test environment:', error);
-      isConnected = false;
-    }
+    // Setup database connection
+    // If database is not available, tests will be skipped
+    isConnected = await setupDatabase();
   });
 
   afterAll(async () => {
     // Clean up connection if it was established
     if (isConnected) {
-      await db.disconnect();
+      await cleanupDatabase();
     }
   });
 
@@ -55,6 +50,20 @@ describe('Prisma Client', () => {
 
     expect(typeof result).toBe('number');
     expect(result).toBeGreaterThanOrEqual(0);
+  });
+
+  describe('Database Utilities', () => {
+    it('should have connect method', () => {
+      expect(typeof db.connect).toBe('function');
+    });
+
+    it('should have disconnect method', () => {
+      expect(typeof db.disconnect).toBe('function');
+    });
+
+    it('should have testConnection method', () => {
+      expect(typeof db.testConnection).toBe('function');
+    });
   });
 
   describe('Database Models', () => {
