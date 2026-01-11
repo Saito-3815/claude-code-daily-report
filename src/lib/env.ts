@@ -8,7 +8,10 @@
 // Load environment variables from .env file
 // This is safe for Next.js as it will use built-in env loading when available
 import { config } from 'dotenv';
-config();
+
+// Load the appropriate .env file based on NODE_ENV
+const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
+config({ path: envFile });
 
 import { z } from 'zod';
 

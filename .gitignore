@@ -28,7 +28,7 @@ yarn-error.log*
 # Local env files
 .env*.local
 .env
-.env.test
+# Note: .env.test is NOT ignored - it contains non-sensitive test values and should be committed
 
 # Vercel
 .vercel

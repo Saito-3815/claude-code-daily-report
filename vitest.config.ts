@@ -7,6 +7,10 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     globals: true,
+    // Set NODE_ENV before any imports
+    env: {
+      NODE_ENV: 'test',
+    },
     setupFiles: ['./src/test/setup.ts'],
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     exclude: ['node_modules', 'dist', '.next', 'coverage', 'issue-3'],
