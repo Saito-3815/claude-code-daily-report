@@ -14,6 +14,22 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    # PostgreSQLサービスをCIで起動
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: daily_report_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -55,8 +71,15 @@ jobs:
       - name: Generate Prisma Client
         run: npx prisma generate
 
+      - name: Setup database schema
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/daily_report_test?schema=public
+
       - name: Run tests
         run: npm run test:coverage
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/daily_report_test?schema=public
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v4

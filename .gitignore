@@ -45,5 +45,6 @@ next-env.d.ts
 *~
 
 # Prisma
-prisma/migrations
+# Note: Migrations should be committed to version control
+# prisma/migrations - DO NOT IGNORE THIS
 issue-3/
