@@ -28,6 +28,7 @@ yarn-error.log*
 # Local env files
 .env*.local
 .env
+# Note: .env.test is NOT ignored - it contains non-sensitive test values and should be committed
 
 # Vercel
 .vercel
@@ -44,4 +45,6 @@ next-env.d.ts
 *~
 
 # Prisma
-prisma/migrations
+# Note: Migrations should be committed to version control
+# prisma/migrations - DO NOT IGNORE THIS
+issue-3/
